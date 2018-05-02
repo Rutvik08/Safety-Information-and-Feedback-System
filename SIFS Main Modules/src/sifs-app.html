@@ -1,0 +1,443 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-item-body.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../bower_components/web-animations-js/web-animations.min.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/iron-label/iron-label.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/maps-icons.html">
+<link rel="import" href="../bower_components/iron-scroll-target-behavior/iron-scroll-target-behavior.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/paper-rating/paper-rating.html">
+<link rel="lazy-import" href="map-view.html">
+<link rel="lazy-import" href="feedback-view.html">
+<link rel="lazy-import" href="login-view.html">
+<link rel="lazy-import" href="error-view.html">
+<link rel="lazy-import" href="list-view.html">
+<dom-module id="sifs-app">
+    <template>
+    <style>
+      :host {
+        --app-primary-color: #607D8B;
+        --app-secondary-color: black;
+        display: block;
+      }
+
+      app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
+      }
+
+      app-header {
+        color: #fff;
+        background-color: var(--app-primary-color);
+      }
+
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+
+      .drawer-list {
+        margin: 0 20px;
+      }
+
+      .drawer-list a {
+        display: block;
+        padding: 0 16px;
+        text-decoration: none;
+        color: var(--app-secondary-color);
+        line-height: 40px;
+      }
+    
+
+      .drawer-list a.iron-selected {
+        color: black;
+        font-weight: bold;
+      }
+      #example-sizing-contain {
+      width: 200px;
+      height: 100px;
+    }
+
+    .space{
+      margin-top: 15px;
+    }
+
+     .spacelefft{
+      margin : 8px;
+    }
+
+    paper-button.indigo {
+    background-color: var( --paper-blue-grey-500);
+    color: white;
+    --paper-button-raised-keyboard-focus: {
+      background-color: var(--paper-pink-a200) !important;
+      color: white !important;
+    };
+  }
+
+paper-button {
+    font-family: 'Roboto', 'Noto', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  paper-button.indigo:hover {
+    background-color: teal;
+  }
+  paper-tabs {
+    --paper-tabs-selection-bar-color: #26b99a;
+    background-color:rgba(96, 125, 139, 0.26);
+  }
+
+ .container {
+        margin-top: 0.5em;
+        color: black;
+        font-size: 10px;
+      }
+
+.incenter {
+		  display: block;
+  margin-right: auto;
+  margin-left: auto;
+	}
+
+    .textColor{
+    color:red;
+}
+
+      .inline {
+      display: inline;
+    }
+
+    .decore {
+        font-size: 45px;
+        font-weight: bold;
+        color:teal;
+        align-self: center
+    }
+
+    .divd{
+        align-content: center;
+        margin-left: 48px;
+        margin-top: 6px;
+    }
+
+    </style>
+
+    <app-location
+        route="{{route}}"
+        url-space-regex="^[[rootPath]]">
+    </app-location>
+
+    <app-route
+        route="{{route}}"
+        pattern="[[rootPath]]:page"
+        data="{{routeData}}"
+        tail="{{subroute}}">
+    </app-route>
+
+    <app-drawer-layout fullbleed narrow="{{narrow}}">
+      <!-- Drawer content -->
+      <app-drawer id="drawer" slot="drawer"  
+    swipe-open="[[narrow]]">
+        <app-toolbar>
+            <a href="javascript:window.location.reload(true)"> 
+          <iron-image alt="SIFS" sizing="contain" id="example-sizing-contain" rate="0"
+           src="../images/san_logo.png">
+        
+          </iron-image>
+        
+        </a> 
+        </app-toolbar>
+        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <!-- <a name="login-view" href="[[rootPath]]login-view">Admin Login</a> -->
+          <paper-tabs selected="{{selectedTab}}">
+              <paper-tab><a name="map-view"  href="[[rootPath]]map-view">View Map</a></paper-tab>
+              <paper-tab><a name="feedback-view"  href="[[rootPath]]feedback-view">Safety Feedbacks</a></paper-tab>
+            </paper-tabs>
+        </iron-selector>
+        <iron-pages
+        selected="[[page]]"
+        attr-for-selected="name"
+        fallback-selection="errorView"
+        role="main">
+        <div name="map-view"  class="spacelefft">
+
+        <iron-form id="filterPage" on-iron-form-response="_didReceiveResponse"  on-iron-form-presubmit="_presubmit" on-iron-form-error="_error"> 
+        
+        <form    method="post" action="http://localhost/SIFSapi/filter_marker.php" content-type="application/json"  >
+                 
+
+          <iron-label for="gender">
+            Gender :  </iron-label>
+             <paper-radio-group attr-for-selected="name2" label="Gender" id="gender" selected="a">
+             <paper-radio-button  value="a" name="fgender" name2="all">ALL</paper-radio-button>
+             <paper-radio-button  value="M" name="fgender" name2="male">Male</paper-radio-button>
+             <paper-radio-button  value="F" name="fgender" name2="female">Female</paper-radio-button>
+             <paper-radio-button  value="O" name="fgender" name2="other">Other</paper-radio-button>
+           </paper-radio-group>
+
+            <paper-dropdown-menu label="Select Rating" name="frate" on-iron-select="">
+                <paper-listbox id="rateList" slot="dropdown-content" selected="0">
+                        <paper-item value="0">Select Rating</paper-item>
+                  <paper-item value="1">1</paper-item>
+                  <paper-item value="2">2</paper-item>
+                  <paper-item value="3">3</paper-item>
+                  <paper-item value="4">4</paper-item>
+                  <paper-item value="5">5</paper-item>
+                </paper-listbox>
+              </paper-dropdown-menu>
+
+            <paper-dropdown-menu label="Select Duration" name="fstime" on-iron-select="">
+               <paper-listbox id="timeList" slot="dropdown-content" selected="0">
+                    <paper-item value="0">Select Time</paper-item>  
+                 <paper-item value="first">6 AM TO 6 PM</paper-item>
+                 <paper-item value="second">6 PM TO 6 AM</paper-item>
+               </paper-listbox>
+             </paper-dropdown-menu>
+             <div> 
+             <paper-button raised on-click="_apply"  class="indigo">Apply Filter</paper-button>
+             <paper-button raised on-click="_clear"  class="indigo">Clear Filter</paper-button>
+             </div>
+            </form>
+        </iron-form>
+          <iron-label class="textColor">{{errorMsg}}</iron-label>
+        </div>
+        <div name="feedback-view">
+          <iron-ajax
+          auto
+          url="http://localhost/SIFSapi/fetch_feedback.php"
+          params=''
+          handle-as="json"
+          on-response="_handleResponse"
+          debounce-duration="300"></iron-ajax>
+     
+          <div id="scrollable-element" style="display:block;height:400px;overflow-y: auto;">
+            <x-element scroll-target="scrollable-element" style="height:400px;">
+            
+          <paper-listbox>
+              <template is="dom-repeat" items="{{feedbackAll}}">
+                  <paper-item class="space">
+                  <paper-item-body two-line>      
+                <div >
+                        <span class="container">
+                                <iron-icon icon="maps:place"></iron-icon>
+                               </span>
+                    {{item.title}}</div>
+                    
+                <div secondary>{{item.reason}}</div>
+
+                <div secondary> {{item.date}}</div>
+
+                <div secondary> {{item.time}}</div>
+
+                   <div secondary>Ratings : {{item.rate}}</div>
+
+                      </paper-item-body>
+                    </paper-item>
+                    </template>
+    </paper-listbox>
+    </x-element>
+    </div>
+    </div>
+
+    </iron-pages>
+    <iron-label class="space divd spacelefft">
+        : Feedback Counter : </iron-label>
+    <div class="divd">
+        <iron-label class="space divd decore spacelefft">
+            [[totalCount]] </iron-label>
+    </div>
+    </app-drawer>
+
+    <!-- Main content -->
+    <app-header-layout has-scrolling-region>
+
+        <app-header slot="header" condenses reveals effects="waterfall">
+            <app-toolbar>
+                <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
+                <iron-image alt="SIFS" src="../images/manifest/icon-48x48.png" rate="0"></iron-image>
+                <div main-title>Safety Information & Feedback System</div>
+
+            </app-toolbar>
+        </app-header>
+
+        <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="errorView" role="main">
+            <map-view name="map-view"></map-view>
+            <feedback-view name="feedback-view"></feedback-view>
+            <login-view name="login-view"></login-view>
+            <error-view name="error-view"></error-view>
+        </iron-pages>
+
+    </app-header-layout>
+
+    </app-drawer-layout>
+
+
+    </template>
+
+    <script>
+        class SifsApp extends Polymer.Element {
+            static get is() {
+                return 'sifs-app';
+            }
+
+            static get properties() {
+                return {
+                    page: {
+                        type: String,
+                        reflectToAttribute: true,
+                        observer: '_pageChanged',
+                    },
+                    routeData: Object,
+                    subroute: String,
+					 selectedTab: Number,
+                    sendValue: {
+                        type: String,
+                        value: ' '
+                    },
+                    // This shouldn't be neccessary, but the Analyzer isn't picking up
+                    // Polymer.Element#rootPath
+                    rootPath: String,
+                    feedbackAll: Array,
+                    totalCount: String,
+                      errorMsg: String,
+                    resp: Object
+                };
+            }
+
+            static get observers() {
+                return [
+                    '_routePageChanged(routeData.page)',
+                ];
+            }
+
+
+            _routePageChanged(page) {
+                // If no page was found in the route data, page will be an empty string.
+                // Default to 'view1' in that case.
+                this.page = page || 'map-view';
+
+                // Close a non-persistent drawer when the page & route are changed.
+                if (!this.$.drawer.persistent) {
+                    this.$.drawer.close();
+                }
+            }
+
+            _pageChanged(page) {
+                // Load page import on demand. Show 404 page if 
+				   if (page == 'feedback-view') {
+                    this.selectedTab = 1;
+                } else if (page == 'map-view') {
+                    this.selectedTab = 0;
+                }
+                var resolvedPageUrl = this.resolveUrl(page + '.html');
+                Polymer.importHref(
+                    resolvedPageUrl,
+                    null,
+                    this._showPage404.bind(this),
+                    true);
+                this.sendValue = resolvedPageUrl;
+
+            }
+
+            _handleResponse(e) {
+                let response = e.detail.response;
+                this.response = response;
+                if (!this.response.error) {
+                    this.feedbackAll = this.response.feedback;
+                    this.totalCount = this.feedbackAll.length;
+                    this.resp = this.response;
+                }
+            }
+
+
+            _showPage404() {
+                this.page = 'map-view';
+            }
+
+
+            _apply(e) {
+                this.$.filterPage.submit();
+            }
+
+            _clear(e) {
+                this.$.filterPage.reset();
+                  this.errorMsg = ' ';
+                  this.$.rateList.selected=0;
+                  this.$.timeList.selected=0;
+                window.dispatchEvent(new CustomEvent('kick', {
+                    detail: {
+                        value: this.resp
+                    }
+                }));
+            }
+
+            _didReceiveResponse(e) {
+                let response = e.detail.response;
+                this.sendValue = response;
+                try {
+  window.dispatchEvent(new CustomEvent('kick', {
+                        detail: {
+                            value: this.sendValue
+                        }
+                    }));
+
+ if (response.feedback.length == 0) {
+    this.errorMsg = 'No Matched Data Found. ';
+                    }
+
+
+                   
+                } catch (e) {
+
+                }
+            }
+
+        }
+
+        document.addEventListener('iron-form-submit', function(event) {
+            console.log(JSON.stringify(event.detail, null, 2));
+        });
+
+        document.addEventListener('iron-form-response', function(event) {
+            if (event.detail.status === 200) {
+
+            }
+        });
+
+        document.addEventListener('iron-form-error', function(event) {
+
+            console.log(event.detail.response);
+        });
+
+        window.customElements.define(SifsApp.is, SifsApp);
+    </script>
+    <script>
+    </script>
+</dom-module>

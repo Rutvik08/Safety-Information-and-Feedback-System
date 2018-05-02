@@ -1,0 +1,172 @@
+<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/mapbox-gl/mapbox-gl.html">
+<link rel="import" href="../bower_components/mapbox-gl/mapbox-gl-marker.html">
+<link rel="import" href="../bower_components/mapbox-gl/mapbox-gl-control.html">
+<link rel="import" href="../bower_components/mapbox-gl/mapbox-building-layer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="map-view">
+    <template>
+    <style include="shared-styles">
+	  
+	    #map { 
+        position: absolute; 
+	top: 40px; 
+	bottom: 10px; 
+    margin-top:40px;
+    right: 10px;
+    left:10px;
+     
+   }  
+
+.mapCard {
+    margin-top:60px;
+    margin-right: 10px;
+    margin: 10px;
+    color: #757575;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+paper-toast {
+z-index:99999;
+}
+	  #mapControl { 
+	top: 40%; 
+}
+
+    </style>
+    
+ <paper-toast id="toast" horizontal-position="left" vertical-position="top" text="{{errorMsg}}"></paper-toast>
+
+    <mapbox-gl id="map"
+    class="mapCard"
+  interactive
+  map="{{map}}"
+  script-src="https://api.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js"
+  map-style-url="mapbox://styles/mapbox/streets-v9"
+  access-token="pk.eyJ1IjoiZmFsbGVuYXJ0aXN0IiwiYSI6IkRHY2JKRWMifQ.m6rylJF-IEcmwtiRsVO1WA"
+  latitude=32.775056650791
+  longitude=-117.07214713097
+  zoom=16
+  pitch=0
+  bearing=0>
+
+<iron-ajax
+auto
+url="http://localhost/SIFSapi/fetch_feedback.php"
+params=''
+handle-as="json"
+on-response="_handleResponse"
+debounce-duration="300"></iron-ajax>
+
+<template is="dom-repeat" id="marker" items="{{feedbacks}}">
+
+    <mapbox-gl-marker 
+    latitude={{item.latitude}} longitude={{item.longitude}}
+    markerId={{item.id}}
+    offset-left=-64 offset-top=-30 item={{item}}>
+    <iron-image alt="SIFS" rate=[[item.rate]]>
+    
+       </iron-image>
+    
+
+    </mapbox-gl-marker>
+
+    </template>
+
+
+    <mapbox-gl-control map="[[map]]" icontrol-name="NavigationControl" icontrol-options='{"compass": true}' position="bottom-right"></mapbox-gl-control>
+    <mapbox-gl-control icontrol-name="FullscreenControl" map="[[map]]" position="top-left">
+    </mapbox-gl-control>
+
+    <!-- <mapbox-gl-control icontrol-name="GeolocateControl" icontrol-options='{"trackUserLocation": true, -->
+    "showUserLocation" :true }' map="[[map]]" position="top-right">
+    <!-- </mapbox-gl-control> -->
+    </mapbox-gl>
+    </template>
+
+    <script>
+        class MapView extends Polymer.Element {
+            static get is() {
+                return 'map-view';
+            }
+
+            static get properties() {
+                return {
+
+                    map: {
+                        type: Object
+                    },
+                    feedbacks: Array,
+                    filterFeed: Array,
+                    receivedValue: Object,
+                    errorMsg: String,
+                    imageSrc: String
+                };
+
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                var self = this;
+                window.addEventListener('kick', function(e) {
+
+                    var receivedValue = e.detail.value;
+                    console.log(receivedValue);
+                    if (!receivedValue.error) {
+
+                        self.feedbacks = receivedValue.feedback;
+
+                    } else {
+                        this.errorMsg = 'No Feedback Found.';
+                        document.getElementById('toast').show('No Feedback Found.');
+                    }
+                });
+
+
+            }
+
+            _isEqualTo(rate) {
+                debugger
+                if (rate == "1") {
+                    this.imageSrc = "../images/map-marker2.png";
+                    return true;
+                } else if (rate == "2") {
+                    this.imageSrc = "../images/map-marker2.png";
+                    return true;
+                } else if (rate == "3") {
+                    this.imageSrc = "../images/map-marker3.png";
+                    return true;
+                } else if (rate == "4") {
+                    this.imageSrc = "../images/map-marker2.png";
+                    return true;
+                } else if (rate == "5") {
+                    this.imageSrc = "../images/map-marker1.png";
+                    return true;
+                } else {
+                    this.imageSrc = "../images/map-marker3.png";
+                    return true;
+                }
+            }
+
+            _handleResponse(e) {
+                let response = e.detail.response;
+                this.response = response;
+                if (!this.response.error) {
+                    this.feedbacks = this.response.feedback;
+                }
+            }
+        }
+
+
+        window.customElements.define(MapView.is, MapView);
+    </script>
+</dom-module>

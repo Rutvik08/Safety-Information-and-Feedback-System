@@ -1,0 +1,138 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/iron-label/iron-label.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<dom-module id="login-view">
+    <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+      paper-button.indigo {
+    background-color: var( --paper-blue-grey-500);
+    color: white;
+    --paper-button-raised-keyboard-focus: {
+      background-color: var(--paper-pink-a200) !important;
+      color: white !important;
+    };
+  }
+
+      
+  paper-button.indigo:hover {
+    background-color: var(--paper-indigo-400);
+  }
+      .wrapper-btns {
+    margin-top: 15px;
+}
+paper-button.link {
+    color: #757575;
+}
+paper-spinner[aria-hidden] {
+display: none;
+}
+paper-spinner:not([aria-hidden]) {
+display: inline-block;
+}
+
+paper-toast {
+    z-index: 9999;
+}
+    </style>
+
+    <div class="card">
+      <div id="unauthenticated">
+        <h1>SIFS - San Diego State University</h1>
+       
+    <p><strong>Log in</strong> to access <strong>SIFS</strong></p>
+   <iron-form id="signPage" on-iron-form-response="_didReceiveResponse" > 
+        <form    method="post" action="http://localhost/SIFSapi/admin_login.php" content-type="application/json"   >
+    <paper-input label="Username" name="admin_email" type="text" id="uemail" value = "{{email::uemail}}" required error-message="Username or Email Required to login">
+      <iron-icon icon="mail" slot="prefix"></iron-icon>
+    </paper-input>
+
+    <paper-input label="Password" name="admin_pwd" type="password" id="upwd" value = "{{pwd::upwd}}" required  error-message="Valid Password Required">
+      <iron-icon icon="lock" slot="prefix"></iron-icon>
+    </paper-input>
+    <div class="wrapper-btns">
+        <paper-button raised class="indigo" on-click="_submit"  id="signSubmit">
+            Log In</paper-button> <paper-spinner id="spinner" active={{isShown}}></paper-spinner> 
+      <div id="output">{{toastMsg}}</div>
+    </div>
+  </form>
+  </iron-form>
+</div>
+    </div>
+   
+  </template>
+    <paper-toast id="logintoast" class="fit-bottom" horizontalAlign="right" text="{{toastMsg}}"></paper-toast>
+
+    <script>
+        class LoginView extends Polymer.Element {
+            static get is() {
+                return 'login-view';
+            }
+
+            static get properties() {
+                return {
+                    admin_email: String,
+                    admin_pwd: String,
+                    isShown: Boolean,
+                    toastMsg: String
+                };
+            }
+
+            _showToast() {
+                this.$.logintoast.open();
+                console.log("call");
+            }
+
+            _submit(e) {
+                //   document.getElementById('signPage').submit();
+                this.isShown = true;
+                console.log(e);
+                this.$.signPage.submit();
+            }
+
+            _didReceiveResponse(e) {
+                this.isShown = false;
+                let response = e.detail.response;
+                this.response = response;
+                this.toastMsg = response;
+                console.log(response);
+                this._showToast();
+            }
+        }
+
+        document.addEventListener('iron-form-submit', function(event) {
+            // document.getElementById('request').textContent = JSON.stringify(event.detail, null, 2);
+            console.log(JSON.stringify(event.detail, null, 2));
+        });
+
+        document.addEventListener('iron-form-response', function(event) {
+            if (event.detail.status === 200) {
+                console.log(event.detail.response);
+                //  document.getElementById('signPage').reset();
+                // document.getElementById('toast').show({
+                //     text: ' was sent.',
+                //     duration: 8000
+                // });
+                // document.getElementById('response').textContent = JSON.stringify(event.detail.response, null, 2);
+            }
+        });
+
+        document.addEventListener('iron-form-error', function(event) {
+            console.log(event.detail.response);
+        });
+
+        window.customElements.define(LoginView.is, LoginView);
+    </script>
+</dom-module>

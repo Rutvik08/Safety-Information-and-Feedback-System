@@ -1,0 +1,314 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="shared-styles.html">
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-label/iron-label.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/l2t-paper-rating/l2t-paper-rating.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/app-datepicker/app-datepicker-dialog.html">
+<link rel="import" href="../bower_components/app-datepicker/app-datepicker-animations.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../bower_components/web-animations-js/web-animations.min.html">
+<link rel="import" href="../bower_components/mapbox-gl/mapbox-gl.html">
+<link rel="import" href="../bower_components/mapbox-gl/mapbox-gl-marker.html">
+<link rel="import" href="../bower_components/mapbox-gl/mapbox-building-layer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../bower_components/mapbox-gl/mapbox-gl-control.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-rating/paper-rating.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+
+<dom-module id="feedback-view">
+    <template>
+    <style include="shared-styles">
+
+
+ paper-dropdown-menu, paper-listbox {
+    width: 250px;
+  }
+  paper-dropdown-menu {
+    height: 80px;
+    margin: auto;
+  }
+
+  paper-toast {
+z-index:99999;
+}
+
+.textColor{
+    color:green;
+}
+
+      paper-button.indigo {
+    background-color: var( --paper-blue-grey-500);
+    color: white;
+    --paper-button-raised-keyboard-focus: {
+      background-color: var(--paper-pink-a200) !important;
+      color: white !important;
+    };
+  }
+  paper-button.indigo:hover {
+    background-color: var(--paper-indigo-400);
+  }
+
+    .color {
+      --rating-icon-color: #ffb300;
+      --rating-ink-color: #ffb300;
+    }
+      --paper-rating-active-color {
+          color:#ffb300;
+      };
+--paper-rating-inactive-color {
+    color:#ffb300;
+};
+    
+
+        #map { 
+	position: relative; 
+	top: 0; 
+	bottom: 0; 
+	width:100%; 
+  height: 400px;
+  margin-top: 20px;
+  }
+  paper-spinner[aria-hidden] {
+display: none;
+}
+paper-spinner:not([aria-hidden]) {
+display: inline-block;
+}
+    </style>
+<custom-style><!--This bit goes in the header-->
+  <style is="custom-style">
+    .color {
+      --rating-icon-color: #ffb300;
+      --rating-ink-color: #ffb300;
+    }
+
+  </style>
+</custom-style>
+    <div class="card">
+      <h1>Safety Feedback</h1>
+      <paper-toast id="toast" horizontal-position="left" vertical-position="top" text="{{errorMsg}}"></paper-toast>
+
+      <iron-form id="signPage" on-iron-form-response="_didReceiveResponse"  on-iron-form-presubmit="_presubmit" on-iron-form-error="_error"> 
+          <form    method="post" action="http://localhost/SIFSapi/submit_feedback.php" content-type="application/json"  >
+      <paper-input label="First Name" name="fname"></paper-input>
+      <paper-input  label="Last Name" name="flname"></paper-input>
+      <paper-input  label="Student ID / Employment ID" name="fid" ></paper-input>
+      <div >
+        <iron-label for="gender">
+             Gender :  </iron-label>
+             <paper-radio-group id="gender" attr-for-selected="name2">
+                <paper-radio-button value="M" name="fsgender" name2="male">Male</paper-radio-button>
+                <paper-radio-button value="F" name="fsgender" name2="female">Female</paper-radio-button>
+                <paper-radio-button value="O" name="fsgender" name2="other">Other</paper-radio-button>
+            </paper-radio-group>
+          </div>
+         
+         <div>
+            <paper-input  on-click="openDialog" name="fsdate" label="Select Date" value="{{dynamicDate}}">
+            </paper-input>
+            <app-datepicker-dialog autoUpdateDate="true"  view="vertical" format="dd/mm/yyyy"   date="{{dynamicDate}}" id="dialog"></app-datepicker-dialog>
+         </div>
+         <div> 
+         <paper-dropdown-menu label="Select Duration" name="fstime"  on-iron-select="" required>
+            <paper-listbox slot="dropdown-content" selected="1">
+              <paper-item value="first">6 AM TO 6 PM</paper-item>
+              <paper-item value="second">6 PM TO 6 AM</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+        </div>
+          <div>  
+      <iron-label for="ratebar">
+        Give Rating to your Feedback : </iron-label>
+        <paper-rating rating="{{frate}}"  max="5" name="frate"></paper-rating>
+        <!-- <l2t-paper-rating total="5" id="ratebar" rating="{{frate}}"  name="frate" class="color"></l2t-paper-rating>    -->
+    </div>
+      <div>
+        <paper-input  label="Feedback Title" name="ftitle" char-counter maxlength="30" required error-message="Enter some valid feedback title to submit."> </paper-input>
+        <paper-input  label="Feedback Description" name="freason" char-counter maxlength="120" required error-message="Enter some valid feedback to submit."> </paper-input>
+    </div>
+    <div>
+    <paper-input value="{{flat}}" id="latitude"  name="flat" label="Latitude" required error-message="Location Required"></paper-input>
+    <paper-input value="{{flog}}" id="longitude"  name="flog" label="Longitude" required error-message="Location Required"></paper-input>
+</div>
+    <mapbox-gl id="map"
+    interactive
+    map="{{map}}"
+    script-src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js"
+    map-style-url="mapbox://styles/mapbox/streets-v9"
+    access-token="pk.eyJ1IjoiZmFsbGVuYXJ0aXN0IiwiYSI6IkRHY2JKRWMifQ.m6rylJF-IEcmwtiRsVO1WA"
+    latitude=32.775056650791
+    longitude=-117.07214713097 
+    zoom=16
+    events-to-watch="click"
+    on-mapbox-gl-click="_onClickMap"
+    pitch=0
+    bearing=0>
+    <mapbox-gl-control
+    map="[[map]]"
+    icontrol-name="NavigationControl"
+    icontrol-options='{"compass": true}'
+    position="bottom-right"></mapbox-gl-control>
+  <mapbox-gl-control
+    icontrol-name="GeolocateControl"
+     map="[[map]]"
+    icontrol-options='{"trackUserLocation": true,
+    "showUserLocation" :true }'
+    position="top-left">
+  </mapbox-gl-control>
+  <mapbox-gl-control icontrol-name="FullscreenControl" map="[[map]]" position="top-right">
+</mapbox-gl-control>
+
+</mapbox-gl>
+  <div style="margin-top:10px;"></div>
+    <div>
+        <paper-button raised on-click="_submit"  class="indigo">Submit </paper-button> 
+        <paper-spinner id="spinner" active={{isShown}}></paper-spinner>
+        <paper-button raised on-click="_reset" class="indigo">Reset</paper-button>
+		  <iron-label class="textColor">{{errorMsg}}</iron-label>
+		</div>
+</form>
+</iron-form>
+  </div>
+  </template>
+
+    <script>
+        var demo1 = document.querySelector('feedback-view');
+        class FeedbackView extends Polymer.Element {
+            static get is() {
+                return 'feedback-view';
+            }
+
+            static get properties() {
+                return {
+                    flat: String,
+                    flog: String,
+                    map: Object,
+                    admin_email: String,
+                    admin_pwd: String,
+                    frate: {
+                        type: String,
+                        value: 2
+                    },
+                    isShown: Boolean,
+                    errorMsg: String,
+                    isClicked: {
+                        type: Boolean,
+                        value: true
+                    }
+                };
+            }
+
+            _presubmit(e) {
+                debugger;
+                var body = this.$.signPage.request.body;
+                var temp = JSON.parse(body);
+                debugger;
+                temp['frate'] = this.frate;
+                this.$.signPage.request.body = JSON.stringify(temp);
+            }
+
+            _submit(e) {
+                this.isShown = true;
+                this.$.signPage.submit();
+            }
+
+            _reset(e) {
+                //   document.getElementById('signPage').submit();
+                this.isShown = false;
+                location = location;
+            }
+
+            _error(e) {
+                this.isShown = false;
+            }
+
+            _didReceiveResponse(e) {
+
+                this.isShown = false;
+                let response = e.detail.response;
+                this.response = response;
+                this.isShown = false;
+                try {
+
+                    if (!this.response.error) {
+                        this.$.signPage.reset();
+                        this.errorMsg = this.response.error_msg;
+                        document.getElementById('toast').show(this.response.error_msg);
+                      setTimeout(function(e) {
+                            this.errorMsg = ' ';
+                            location = location;
+                        }, 800)
+                    } else {
+                        this.errorMsg = this.response.error_msg;
+                        document.getElementById('toast').show(this.response.error_msg);
+                    }
+                } catch (e) {
+                    this.isShown = false;
+                    this.$.signPage.reset();
+                }
+            }
+
+            openDialog() {
+                this.dialog.open();
+            }
+
+            _onClickMap(e, detail) {
+                this.flog = detail.lngLat.lng;
+                this.flat = detail.lngLat.lat;
+                this.monument = [this.flog, this.flat];
+                if (this.isClicked) {
+                    this.marker = new mapboxgl.Marker().setLngLat(this.monument).addTo(this.map);
+                    this.isClicked = false;
+                } else {
+                    this.marker.setLngLat(this.monument);
+                }
+            };
+
+            get dialog() {
+                return this.shadowRoot.querySelector('#dialog');
+            }
+        }
+
+        function _dialog() {
+            return this.shadowRoot.querySelector('#dialog');
+        };
+        // document.querySelector('mapbox-gl').map.addControl(new mapboxgl.NavigationControl());
+        document.addEventListener('iron-form-submit', function(event) {
+            // document.getElementById('request').textContent = JSON.stringify(event.detail, null, 2);
+            console.log(JSON.stringify(event.detail, null, 2));
+        });
+
+        document.addEventListener('iron-form-response', function(event) {
+            if (event.detail.status === 200) {
+                console.log(event.detail.response);
+                // document.getElementById('response').textContent = JSON.stringify(event.detail.response, null, 2);
+            }
+        });
+
+        document.addEventListener('iron-form-error', function(event) {
+
+            console.log(event.detail.response);
+        });
+
+        window.customElements.define(FeedbackView.is, FeedbackView);
+    </script>
+</dom-module>

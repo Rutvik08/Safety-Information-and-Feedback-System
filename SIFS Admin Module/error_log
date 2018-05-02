@@ -1,0 +1,97 @@
+[02-Jan-2018 09:30:49 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[02-Jan-2018 09:30:49 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[02-Jan-2018 09:30:58 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[02-Jan-2018 09:30:58 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[02-Jan-2018 09:30:58 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[02-Jan-2018 09:30:58 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[02-Jan-2018 09:31:06 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[02-Jan-2018 09:31:06 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[02-Jan-2018 09:31:06 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[02-Jan-2018 09:31:06 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 05:26:21 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 05:26:21 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 05:26:26 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 05:26:26 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 05:26:26 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 05:26:26 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 05:28:02 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 05:28:02 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 05:28:02 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 05:28:02 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 05:28:09 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 05:28:09 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 05:28:09 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 05:28:09 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 05:28:18 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 05:28:18 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 05:28:18 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 05:28:18 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:24:28 Etc/GMT] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'unityvfo_unity17' (2) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:24:28 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:24:35 Etc/GMT] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'unityvfo_unity17' (2) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:24:35 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:24:35 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:24:35 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:24:43 Etc/GMT] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'unityvfo_unity17' (2) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:24:43 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:24:43 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:24:43 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:34:25 Etc/GMT] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'unityvfo_unity17' (2) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:34:25 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:34:25 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:34:25 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:34:28 Etc/GMT] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'unityvfo_unity17' (2) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:34:28 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:34:28 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:34:28 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:36:30 Etc/GMT] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'unityvfo_unity17' (2) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:36:30 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:36:30 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:36:30 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:37:09 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo'@'localhost' (using password: NO) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:37:09 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:37:09 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:37:09 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:37:47 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo'@'localhost' (using password: NO) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:37:47 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:37:47 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:37:47 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:37:54 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo'@'localhost' (using password: NO) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:37:54 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:37:54 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:37:54 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:38:16 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:38:16 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:38:16 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:38:16 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:38:28 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:38:28 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:38:28 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:38:28 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:38:35 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:38:35 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:38:35 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:38:35 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:42:10 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo_unity17'@'103.211.216.53' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:42:10 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:42:10 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:42:10 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:42:18 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo_unity17'@'103.211.216.53' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:42:18 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:42:18 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:42:18 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:42:51 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo_unity17'@'103.211.216.53' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:42:51 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:42:51 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:42:51 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:42:59 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo_unity17'@'103.211.216.53' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:42:59 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:42:59 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:42:59 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:49:30 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo_unity1'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:49:30 Etc/GMT] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 5
+[04-Jan-2018 06:49:30 Etc/GMT] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 65
+[04-Jan-2018 06:49:30 Etc/GMT] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in /home/unityvfo/public_html/TollTax-Admin/admin_login.php on line 67
+[04-Jan-2018 06:50:07 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo_unity1'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:53:39 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo_unity1'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
+[04-Jan-2018 06:53:43 Etc/GMT] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'unityvfo_unity1'@'localhost' (using password: YES) in /home/unityvfo/public_html/TollTax-Admin/database/db_conection.php on line 3
